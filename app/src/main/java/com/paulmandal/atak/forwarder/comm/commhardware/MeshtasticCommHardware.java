@@ -472,6 +472,17 @@ public class MeshtasticCommHardware extends MessageLengthLimitedCommHardware {
                     break;
                 case ACTION_NODE_CHANGE:
                     NodeInfo nodeInfo = intent.getParcelableExtra(EXTRA_NODEINFO);
+
+                    Position position = nodeInfo.getPosition();
+                    Position validPosition = nodeInfo.getPosition();
+                    Log.e(TAG, "NODE_CHANGE: position == null? : " + (position == null));
+                    if (position != null) {
+                        Log.e(TAG, "  position, lat: " + position.getLatitude() + ", lon: " + position.getLongitude() + ", alt: " + position.getAltitude());
+                    }
+                    Log.e(TAG, "NODE_CHANGE: validPosition == null? : " + (validPosition == null));
+                    if (validPosition != null) {
+                        Log.e(TAG, "  validPosition, lat: " + validPosition.getLatitude() + ", lon: " + validPosition.getLongitude() + ", alt: " + validPosition.getAltitude());
+                    }
                     updateChannelMembers();
                     updateChannelStatus();
                     break;
